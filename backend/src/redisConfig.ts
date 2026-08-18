@@ -9,3 +9,11 @@ export const connection = new IORedis(process.env.REDIS_URL as string, {
   family: 4,
   tls: { rejectUnauthorized: false }
 });
+
+connection.on('error', (err) => {
+  console.error('[Redis Error]', err);
+});
+
+connection.on('connect', () => {
+  console.log('[Redis] Connected successfully');
+});
