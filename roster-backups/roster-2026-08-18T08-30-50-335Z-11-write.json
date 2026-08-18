@@ -1,0 +1,76 @@
+{
+  "version": 1,
+  "savedAt": "2026-08-18T08:30:07.394Z",
+  "agents": [
+    {
+      "id": "god",
+      "name": "Michael",
+      "character": "michael",
+      "accent": "lemon",
+      "description": "on standby",
+      "project": "hive",
+      "tmuxTarget": "",
+      "cwd": "C:\\Users\\Ayan Ansari\\OneDrive\\Desktop\\Email Automation",
+      "status": "idle",
+      "action": "awaiting",
+      "progress": 0,
+      "currentStation": "desk",
+      "ptyId": "pty-god",
+      "command": "agy --model \"Gemini 3.1 Pro (High)\" --dangerously-skip-permissions",
+      "provider": "antigravity",
+      "model": "Gemini 3.1 Pro (High)",
+      "isGod": true
+    },
+    {
+      "id": "jim-msye10sr",
+      "name": "Jim",
+      "character": "jim",
+      "accent": "sky",
+      "description": "on standby",
+      "project": "C:\\Users\\Ayan Ansari\\OneDrive\\Desktop\\Email Automation",
+      "tmuxTarget": "",
+      "cwd": "C:\\Users\\Ayan Ansari\\OneDrive\\Desktop\\Email Automation",
+      "status": "idle",
+      "action": "starting up",
+      "progress": 0,
+      "currentStation": "desk",
+      "ptyId": "pty-jim-msye10sr",
+      "command": "agy --model \"Gemini 3.1 Pro (High)\" --dangerously-skip-permissions",
+      "provider": "antigravity",
+      "model": "Gemini 3.1 Pro (High)",
+      "archived": false
+    },
+    {
+      "id": "pam-msye1exh",
+      "name": "Pam",
+      "character": "pam",
+      "accent": "sky",
+      "description": "a fresh harness",
+      "project": "C:\\Users\\Ayan Ansari\\OneDrive\\Desktop\\Email Automation",
+      "tmuxTarget": "",
+      "cwd": "C:\\Users\\Ayan Ansari\\OneDrive\\Desktop\\Email Automation",
+      "status": "idle",
+      "action": "starting up",
+      "progress": 0,
+      "currentStation": "desk",
+      "ptyId": "pty-pam-msye1exh",
+      "command": "agy --model \"Gemini 3.1 Pro (High)\" --dangerously-skip-permissions",
+      "provider": "antigravity",
+      "model": "Gemini 3.1 Pro (High)",
+      "archived": false
+    }
+  ],
+  "archived": [],
+  "restorable": [],
+  "queues": {
+    "god": [
+      {
+        "id": "q-1787041379780-1",
+        "text": "Hello",
+        "ts": 1787041379780,
+        "manual": true
+      }
+    ]
+  },
+  "selectedId": "jim-msye10sr"
+}

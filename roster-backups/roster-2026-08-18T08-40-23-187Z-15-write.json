@@ -1,0 +1,56 @@
+{
+  "version": 1,
+  "savedAt": "2026-08-18T08:40:02.420Z",
+  "agents": [
+    {
+      "id": "god",
+      "name": "Michael",
+      "character": "michael",
+      "accent": "lemon",
+      "description": "on standby",
+      "project": "hive",
+      "tmuxTarget": "",
+      "cwd": "C:\\Users\\Ayan Ansari\\OneDrive\\Desktop\\Email Automation",
+      "status": "idle",
+      "action": "awaiting",
+      "progress": 0,
+      "currentStation": "desk",
+      "ptyId": "pty-god",
+      "command": "agy --model \"Gemini 3.1 Pro (High)\" --dangerously-skip-permissions",
+      "provider": "antigravity",
+      "model": "Gemini 3.1 Pro (High)",
+      "isGod": true
+    },
+    {
+      "id": "jim-msyepzje",
+      "name": "Jim",
+      "character": "jim",
+      "accent": "sky",
+      "description": "on standby",
+      "project": "C:\\Users\\Ayan Ansari\\OneDrive\\Desktop\\Email Automation",
+      "tmuxTarget": "",
+      "cwd": "C:\\Users\\Ayan Ansari\\OneDrive\\Desktop\\Email Automation",
+      "status": "idle",
+      "action": "awaiting",
+      "progress": 0,
+      "currentStation": "desk",
+      "ptyId": "pty-jim-msyepzje",
+      "command": "agy --model \"Gemini 3.1 Pro (High)\" --dangerously-skip-permissions",
+      "provider": "antigravity",
+      "model": "Gemini 3.1 Pro (High)"
+    }
+  ],
+  "archived": [],
+  "restorable": [],
+  "queues": {
+    "god": [
+      {
+        "id": "q-1787042118969-1",
+        "text": "Hello",
+        "ts": 1787042118969,
+        "manual": true
+      }
+    ]
+  },
+  "selectedId": "god"
+}

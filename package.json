@@ -1,0 +1,12 @@
+{
+  "name": "smartmail",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "dev": "npm run dev -ws --if-present",
+    "build": "npm run build -ws --if-present"
+  }
+}

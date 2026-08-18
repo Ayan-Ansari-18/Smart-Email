@@ -1,0 +1,144 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id            String         @id @default(uuid())
+  email         String         @unique
+  name          String?
+  picture       String?
+  gmailAccount  GmailAccount?
+  settings      UserSettings?
+  tasks         Task[]
+  events        Event[]
+  bills         Bill[]
+  emails        Email[]
+  drafts        DraftReply[]
+  logs          AutomationLog[]
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+}
+
+model GmailAccount {
+  id            String   @id @default(uuid())
+  userId        String   @unique
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  accessToken   String
+  refreshToken  String?
+  tokenExpiry   DateTime?
+  lastSync      DateTime?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model UserSettings {
+  id                 String   @id @default(uuid())
+  userId             String   @unique
+  user               User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  autoCreateTasks    Boolean  @default(true)
+  autoCreateEvents   Boolean  @default(false)
+  detectBills        Boolean  @default(true)
+  dailySummary       Boolean  @default(true)
+  defaultReminderDay Int      @default(2)
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+}
+
+model Email {
+  id          String   @id @default(uuid())
+  messageId   String   @unique // Gmail's message ID
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  sender      String
+  subject     String
+  snippet     String
+  date        DateTime
+  category    String?  // e.g. "Education", "Work"
+  priority    String?  // e.g. "High", "Medium", "Low"
+  status      String   @default("PENDING") // PENDING, PROCESSED, FAILED
+  isSpam      Boolean  @default(false)
+  draftReply  DraftReply?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Task {
+  id          String   @id @default(uuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title       String
+  description String?
+  dueDate     DateTime?
+  priority    String   @default("Medium") // High, Medium, Low
+  category    String?
+  status      String   @default("TODO") // TODO, IN_PROGRESS, COMPLETED, CANCELLED
+  sourceEmail String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Event {
+  id          String   @id @default(uuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title       String
+  eventDate   DateTime
+  eventTime   String?
+  location    String?
+  sourceEmail String?
+  isConfirmed Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Bill {
+  id          String   @id @default(uuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  company     String
+  amount      Float?
+  currency    String?
+  dueDate     DateTime?
+  type        String?  // e.g. "Electricity", "Subscription"
+  sourceEmail String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Reminder {
+  id           String   @id @default(uuid())
+  userId       String
+  referenceId  String   // ID of Task, Event, or Bill
+  referenceType String  // "TASK", "EVENT", "BILL"
+  reminderDate DateTime
+  isSent       Boolean  @default(false)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model AutomationLog {
+  id          String   @id @default(uuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  action      String   // e.g., "Analyzed Email", "Created Task"
+  result      String   // JSON string of the result
+  status      String   // "SUCCESS", "FAILED"
+  createdAt   DateTime @default(now())
+}
+
+model DraftReply {
+  id              String   @id @default(uuid())
+  emailId         String   @unique
+  email           Email    @relation(fields: [emailId], references: [id], onDelete: Cascade)
+  userId          String
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  suggestedText   String
+  feedback        String?
+  status          String   @default("PENDING") // PENDING, APPROVED, REJECTED, SENT
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
