@@ -1,16 +1,8 @@
 import { Worker, Queue } from 'bullmq';
-import IORedis from 'ioredis';
 import { prisma } from '../db';
-import dotenv from 'dotenv';
 import { startOfDay, endOfDay } from 'date-fns';
-
-dotenv.config();
-
-const connection = new IORedis(process.env.REDIS_URL as string, {
-  maxRetriesPerRequest: null,
-  family: 4,
-  tls: {}
-});
+import { connection } from '../redisConfig';
+import { sendEmail } from '../gmailService';
 
 export const summaryQueue = new Queue('daily-summary', { connection });
 

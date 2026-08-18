@@ -1,15 +1,5 @@
 import { Worker } from 'bullmq';
-import IORedis from 'ioredis';
-import { prisma } from '../db';
-import dotenv from 'dotenv';
-
-dotenv.config();
-
-const connection = new IORedis(process.env.REDIS_URL as string, {
-  maxRetriesPerRequest: null,
-  family: 4,
-  tls: {}
-});
+import { connection } from '../redisConfig';
 
 export const reminderWorker = new Worker(
   'reminder-processing',

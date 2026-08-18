@@ -1,16 +1,5 @@
 import { Worker } from 'bullmq';
-import IORedis from 'ioredis';
-import { prisma } from '../db';
-import { extractEntitiesFromEmail } from '../services/aiService';
-import dotenv from 'dotenv';
-
-dotenv.config();
-
-const connection = new IORedis(process.env.REDIS_URL as string, {
-  maxRetriesPerRequest: null,
-  family: 4,
-  tls: {}
-});
+import { connection } from '../redisConfig';
 
 async function scheduleReminder(userId: string, refId: string, refType: string, targetDate: Date) {
   // Simple scheduling rule: remind 24 hours before
