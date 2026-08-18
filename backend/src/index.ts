@@ -11,8 +11,9 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:5173';
 
-const allowedOrigins = ['http://localhost:5173'];
+const allowedOrigins = [FRONTEND_URL, 'http://localhost:5173'];
 app.use(cors({
   origin: (origin, callback) => {
     if (!origin || allowedOrigins.includes(origin)) {
@@ -57,12 +58,12 @@ app.get('/api/auth/google', passport.authenticate('google', {
 
 app.get(
   '/api/auth/google/callback',
-  passport.authenticate('google', { session: false, failureRedirect: 'http://localhost:5173/login?error=auth_failed' }),
+  passport.authenticate('google', { session: false, failureRedirect: `${FRONTEND_URL}/login?error=auth_failed` }),
   (req, res) => {
     const user = req.user as any;
     const token = generateToken(user.id);
     // Redirect to frontend to save token in localStorage
-    res.redirect(`http://localhost:5173/auth/success?token=${token}`);
+    res.redirect(`${FRONTEND_URL}/auth/success?token=${token}`);
   }
 );
 
