@@ -3,9 +3,16 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
+const redisUrl = process.env.REDIS_URL || process.env.REDIS_URI;
+
+if (!redisUrl) {
+  console.error('[Redis] ERROR: No REDIS_URL or REDIS_URI provided in environment variables!');
+}
+
 // Create a single shared Redis connection for all queues and workers
-export const connection = new IORedis(process.env.REDIS_URL as string, {
-  maxRetriesPerRequest: null
+export const connection = new IORedis(redisUrl as string, {
+  maxRetriesPerRequest: null,
+  family: 0
 });
 
 connection.on('error', (err) => {
