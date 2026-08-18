@@ -1,5 +1,7 @@
 import { Worker } from 'bullmq';
 import { connection } from '../redisConfig';
+import { prisma } from '../db';
+import { extractEntitiesFromEmail } from '../services/aiService';
 
 async function scheduleReminder(userId: string, refId: string, refType: string, targetDate: Date) {
   // Simple scheduling rule: remind 24 hours before

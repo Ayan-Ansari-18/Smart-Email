@@ -2,7 +2,6 @@ import { Worker, Queue } from 'bullmq';
 import { prisma } from '../db';
 import { startOfDay, endOfDay } from 'date-fns';
 import { connection } from '../redisConfig';
-import { sendEmail } from '../gmailService';
 
 export const summaryQueue = new Queue('daily-summary', { connection });
 

@@ -1,5 +1,6 @@
 import { Worker } from 'bullmq';
 import { connection } from '../redisConfig';
+import { prisma } from '../db';
 
 export const reminderWorker = new Worker(
   'reminder-processing',
