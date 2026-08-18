@@ -12,7 +12,8 @@ if (!redisUrl) {
 // Create a single shared Redis connection for all queues and workers
 export const connection = new IORedis(redisUrl as string, {
   maxRetriesPerRequest: null,
-  family: 0
+  family: 4,
+  tls: { rejectUnauthorized: false }
 });
 
 connection.on('error', (err) => {
