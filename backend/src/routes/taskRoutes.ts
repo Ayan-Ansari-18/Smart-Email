@@ -15,14 +15,14 @@ router.get('/', async (req: Request, res) => {
     });
 
     // Map sourceEmail (UUID) to Gmail messageId
-    const emailIds = tasks.map(t => t.sourceEmail).filter(Boolean) as string[];
+    const emailIds = tasks.map((t: any) => t.sourceEmail).filter(Boolean) as string[];
     const emails = await prisma.email.findMany({
       where: { id: { in: emailIds } },
       select: { id: true, messageId: true }
     });
     
     const emailMap = Object.fromEntries(emails.map(e => [e.id, e.messageId]));
-    const tasksWithEmails = tasks.map(t => ({
+    const tasksWithEmails = tasks.map((t: any) => ({
       ...t,
       messageId: t.sourceEmail && emailMap[t.sourceEmail] ? emailMap[t.sourceEmail] : null
     }));

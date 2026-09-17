@@ -10,10 +10,11 @@ if (!redisUrl) {
 }
 
 // Create a single shared Redis connection for all queues and workers
+const isTls = redisUrl ? redisUrl.startsWith('rediss://') : false;
 export const connection = new IORedis(redisUrl as string, {
   maxRetriesPerRequest: null,
   family: 4,
-  tls: { rejectUnauthorized: false }
+  ...(isTls ? { tls: {} } : {})
 });
 
 connection.on('error', (err) => {

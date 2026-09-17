@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "savedAt": "2026-08-19T08:27:09.092Z",
+  "agents": [],
+  "archived": [
+    {
+      "id": "jim-msyepzje",
+      "name": "Jim",
+      "character": "jim",
+      "accent": "sky",
+      "description": "on standby",
+      "project": "C:\\Users\\Ayan Ansari\\OneDrive\\Desktop\\Email Automation",
+      "tmuxTarget": "",
+      "cwd": "C:\\Users\\Ayan Ansari\\OneDrive\\Desktop\\Email Automation",
+      "status": "idle",
+      "action": "archived",
+      "progress": 0,
+      "command": "agy --model \"Gemini 3.1 Pro (High)\" --dangerously-skip-permissions",
+      "provider": "antigravity",
+      "model": "Gemini 3.1 Pro (High)",
+      "archived": true
+    }
+  ],
+  "restorable": [
+    {
+      "id": "jim-msyf1gcp",
+      "name": "Jim",
+      "character": "jim",
+      "accent": "sky",
+      "description": "on standby",
+      "project": "C:\\Users\\Ayan Ansari\\OneDrive\\Desktop\\Email Automation",
+      "tmuxTarget": "",
+      "cwd": "C:\\Users\\Ayan Ansari\\OneDrive\\Desktop\\Email Automation",
+      "status": "idle",
+      "action": "reconnecting…",
+      "progress": 0,
+      "currentStation": "desk",
+      "ptyId": "pty-jim-msyf1gcp",
+      "command": "agy --model \"Gemini 3.1 Pro (High)\" --dangerously-skip-permissions",
+      "provider": "antigravity",
+      "model": "Gemini 3.1 Pro (High)"
+    }
+  ],
+  "queues": {},
+  "selectedId": null
+}

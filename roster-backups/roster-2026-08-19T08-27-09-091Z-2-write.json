@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "savedAt": "2026-08-20T09:15:57.534Z",
+  "savedAt": "2026-08-19T08:27:01.510Z",
   "agents": [],
   "archived": [
     {
@@ -34,48 +34,29 @@
       "status": "idle",
       "action": "reconnecting…",
       "progress": 0,
+      "currentStation": "desk",
       "ptyId": "pty-jim-msyf1gcp",
       "command": "agy --model \"Gemini 3.1 Pro (High)\" --dangerously-skip-permissions",
       "provider": "antigravity",
-      "model": "Gemini 3.1 Pro (High)",
-      "archived": false
-    },
-    {
-      "id": "pam-msztzxrg",
-      "name": "Pam",
-      "character": "pam",
-      "accent": "sky",
-      "description": "on standby",
-      "project": "C:\\Users\\Ayan Ansari\\OneDrive\\Desktop\\Email Automation",
-      "tmuxTarget": "",
-      "cwd": "C:\\Users\\Ayan Ansari\\OneDrive\\Desktop\\Email Automation",
-      "status": "idle",
-      "action": "reconnecting…",
-      "progress": 0,
-      "ptyId": "pty-pam-msztzxrg",
-      "command": "agy --model \"Gemini 3.5 Flash (High)\" --dangerously-skip-permissions",
-      "provider": "antigravity",
-      "model": "Gemini 3.5 Flash (High)"
+      "model": "Gemini 3.1 Pro (High)"
     }
   ],
   "queues": {
     "god": [
       {
-        "id": "q-1787128066744-2",
+        "id": "q-1787042716356-7",
         "text": "You have new hive inbox message(s) — read your inbox, act on them now, and move handled ones to inbox/.done/. Act autonomously; only message god if you genuinely need a decision.",
-        "ts": 1787128066744,
-        "manual": true
+        "ts": 1787042716356
       },
       {
-        "id": "q-1787128030729-1",
+        "id": "q-1787042768227-8",
         "text": "You have new hive inbox message(s) — read your inbox, act on them now, and move handled ones to inbox/.done/. Act autonomously; only message god if you genuinely need a decision.",
-        "ts": 1787128030729,
-        "manual": true
+        "ts": 1787042768227
       },
       {
-        "id": "q-1787128146735-3",
+        "id": "q-1787042796227-9",
         "text": "You have new hive inbox message(s) — read your inbox, act on them now, and move handled ones to inbox/.done/. Act autonomously; only message god if you genuinely need a decision.",
-        "ts": 1787128146735
+        "ts": 1787042796227
       }
     ]
   },

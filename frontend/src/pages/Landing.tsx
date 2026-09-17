@@ -73,7 +73,7 @@ const InteractiveDemo = () => {
     <div className="relative mx-auto max-w-4xl mt-20">
       <div className="rounded-2xl border border-white/40 bg-white/60 backdrop-blur-xl shadow-2xl p-6 relative overflow-hidden">
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center h-[350px]">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center h-auto md:h-[350px]">
           {/* Left Side: Mock Email */}
           <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-5 h-full relative overflow-hidden">
             <div className="flex items-center gap-3 mb-4">
@@ -275,7 +275,7 @@ export default function Landing() {
                       ) : (
                         <div className="w-6 h-6 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center"><User className="w-4 h-4" /></div>
                       )}
-                      <span className="text-sm font-medium text-gray-700 max-w-[150px] truncate">{activeAccount.email}</span>
+                      <span className="text-sm font-medium text-gray-700 max-w-[100px] sm:max-w-[150px] truncate">{activeAccount.email}</span>
                       <ChevronDown className={`w-4 h-4 text-gray-500 transition-transform ${dropdownOpen ? 'rotate-180' : ''}`} />
                     </button>
                     
@@ -361,7 +361,7 @@ export default function Landing() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <h1 className="text-6xl sm:text-8xl font-extrabold tracking-tight mb-6 text-gray-900 leading-tight">
+            <h1 className="text-5xl sm:text-7xl lg:text-8xl font-extrabold tracking-tight mb-6 text-gray-900 leading-tight">
               Your Inbox, <br className="hidden sm:block" /> 
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-600 animate-gradient-x">
                 Automatically Organized.

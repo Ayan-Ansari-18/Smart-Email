@@ -1,7 +1,7 @@
 // Linter refresh
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { RefreshCw, LogOut, Home } from 'lucide-react';
+import { RefreshCw, LogOut, Home, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import api from '../api';
 import Inbox from './Inbox';
@@ -14,6 +14,7 @@ export default function Dashboard() {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
   const [activeTab, setActiveTab] = useState<'dashboard' | 'inbox' | 'tasks' | 'events' | 'bills' | 'approvals'>('dashboard');
   const [stats, setStats] = useState({ emails: 0, tasks: 0, events: 0 });
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -80,22 +81,43 @@ export default function Dashboard() {
   if (isAuthenticated === null) return <div>Loading...</div>;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50 flex">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50 flex flex-col md:flex-row">
+      {/* Mobile Header */}
+      <div className="md:hidden flex items-center justify-between p-4 bg-white/70 backdrop-blur-md border-b border-gray-200/50 z-20 sticky top-0">
+        <h2 className="text-xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600 tracking-tight">SmartMail</h2>
+        <button onClick={() => setSidebarOpen(true)} className="p-2 text-gray-600 hover:bg-gray-100 rounded-lg">
+          <Menu className="w-6 h-6" />
+        </button>
+      </div>
+
+      {/* Sidebar Overlay (Mobile) */}
+      <AnimatePresence>
+        {sidebarOpen && (
+          <motion.div 
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+            onClick={() => setSidebarOpen(false)}
+            className="fixed inset-0 bg-black/20 z-30 md:hidden"
+          />
+        )}
+      </AnimatePresence>
+
       {/* Sidebar with Glassmorphism */}
       <motion.div 
-        initial={{ x: -50, opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        transition={{ duration: 0.5, ease: 'easeOut' }}
-        className="w-64 bg-white/70 backdrop-blur-xl border-r border-gray-200/50 p-4 flex flex-col shadow-sm z-10"
+        className={`fixed inset-y-0 left-0 z-40 w-64 bg-white/95 md:bg-white/70 backdrop-blur-xl border-r border-gray-200/50 p-4 flex flex-col shadow-2xl md:shadow-sm md:relative transition-transform duration-300 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}`}
       >
-        <h2 className="text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600 mb-8 tracking-tight">SmartMail</h2>
+        <div className="flex items-center justify-between mb-8">
+          <h2 className="text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600 tracking-tight">SmartMail</h2>
+          <button onClick={() => setSidebarOpen(false)} className="md:hidden p-2 text-gray-500 hover:bg-gray-100 rounded-lg">
+            <X className="w-5 h-5" />
+          </button>
+        </div>
         <nav className="space-y-2 flex-1">
-          {['dashboard', 'inbox', 'tasks', 'events', 'bills', 'approvals'].map((tab, idx) => (
+          {['dashboard', 'inbox', 'tasks', 'events', 'bills', 'approvals'].map((tab) => (
             <motion.button
               key={tab}
               whileHover={{ scale: 1.02, x: 4 }}
               whileTap={{ scale: 0.98 }}
-              onClick={() => setActiveTab(tab as any)}
+              onClick={() => { setActiveTab(tab as any); setSidebarOpen(false); }}
               className={`w-full text-left px-4 py-2.5 rounded-xl font-semibold transition-all duration-200 ${
                 activeTab === tab 
                   ? tab === 'approvals' 
@@ -143,17 +165,17 @@ export default function Dashboard() {
             className="h-full"
           >
             {activeTab === 'dashboard' && (
-              <div className="p-8 max-w-6xl mx-auto">
-                <header className="mb-10 flex justify-between items-end">
-                  <div>
-                    <h1 className="text-4xl font-extrabold text-gray-900 tracking-tight">Dashboard</h1>
-                    <p className="text-gray-500 mt-2 text-lg">Welcome to your SmartMail assistant</p>
+              <div className="p-4 md:p-8 max-w-6xl mx-auto">
+                <header className="mb-8 md:mb-10 flex flex-col sm:flex-row sm:justify-between sm:items-end">
+                  <div className="mb-4 sm:mb-0">
+                    <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 tracking-tight">Dashboard</h1>
+                    <p className="text-gray-500 mt-1 md:mt-2 text-base md:text-lg">Welcome to your SmartMail assistant</p>
                   </div>
                   <motion.button 
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => window.location.reload()}
-                    className="flex items-center gap-2 px-5 py-2.5 bg-white/80 backdrop-blur border border-gray-200/50 shadow-sm text-gray-700 rounded-xl hover:bg-gray-50 transition-colors font-semibold text-sm"
+                    className="flex w-fit items-center gap-2 px-5 py-2.5 bg-white/80 backdrop-blur border border-gray-200/50 shadow-sm text-gray-700 rounded-xl hover:bg-gray-50 transition-colors font-semibold text-sm"
                   >
                     <RefreshCw className="w-4 h-4" />
                     Refresh Data

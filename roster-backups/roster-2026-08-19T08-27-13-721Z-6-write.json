@@ -1,0 +1,74 @@
+{
+  "version": 1,
+  "savedAt": "2026-08-19T08:27:11.237Z",
+  "agents": [
+    {
+      "id": "god",
+      "name": "Michael",
+      "character": "michael",
+      "accent": "lemon",
+      "description": "god — runs the floor, triages requests, escalates only critical calls to you",
+      "project": "hive",
+      "tmuxTarget": "",
+      "cwd": "C:\\Users\\Ayan Ansari\\OneDrive\\Desktop\\Email Automation",
+      "status": "idle",
+      "action": "running the floor",
+      "progress": 0,
+      "currentStation": "desk",
+      "ptyId": "pty-god",
+      "command": "agy --model claude-opus-4-8 --dangerously-skip-permissions",
+      "provider": "antigravity",
+      "model": "claude-opus-4-8",
+      "isGod": true
+    },
+    {
+      "id": "jim-msyf1gcp",
+      "name": "Jim",
+      "character": "jim",
+      "accent": "sky",
+      "description": "on standby",
+      "project": "C:\\Users\\Ayan Ansari\\OneDrive\\Desktop\\Email Automation",
+      "tmuxTarget": "",
+      "cwd": "C:\\Users\\Ayan Ansari\\OneDrive\\Desktop\\Email Automation",
+      "status": "idle",
+      "action": "starting up",
+      "progress": 0,
+      "currentStation": "desk",
+      "ptyId": "pty-jim-msyf1gcp",
+      "command": "agy --model \"Gemini 3.1 Pro (High)\" --dangerously-skip-permissions",
+      "provider": "antigravity",
+      "model": "Gemini 3.1 Pro (High)",
+      "archived": false
+    }
+  ],
+  "archived": [
+    {
+      "id": "jim-msyepzje",
+      "name": "Jim",
+      "character": "jim",
+      "accent": "sky",
+      "description": "on standby",
+      "project": "C:\\Users\\Ayan Ansari\\OneDrive\\Desktop\\Email Automation",
+      "tmuxTarget": "",
+      "cwd": "C:\\Users\\Ayan Ansari\\OneDrive\\Desktop\\Email Automation",
+      "status": "idle",
+      "action": "archived",
+      "progress": 0,
+      "command": "agy --model \"Gemini 3.1 Pro (High)\" --dangerously-skip-permissions",
+      "provider": "antigravity",
+      "model": "Gemini 3.1 Pro (High)",
+      "archived": true
+    }
+  ],
+  "restorable": [],
+  "queues": {
+    "god": [
+      {
+        "id": "q-1787128030729-1",
+        "text": "You have new hive inbox message(s) — read your inbox, act on them now, and move handled ones to inbox/.done/. Act autonomously; only message god if you genuinely need a decision.",
+        "ts": 1787128030729
+      }
+    ]
+  },
+  "selectedId": "god"
+}

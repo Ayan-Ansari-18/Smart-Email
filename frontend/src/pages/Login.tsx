@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Mail, CheckCircle, Clock, Calendar } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -69,7 +69,7 @@ export default function Login() {
         <motion.div 
           initial={{ opacity: 0, y: 30, scale: 0.95 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.2, type: 'spring', stiffness: 200, damping: 20 }}
+          transition={{ duration: 0.6, delay: 0.2, type: 'spring' as const, stiffness: 200, damping: 20 }}
           className="bg-white/80 backdrop-blur-xl p-10 lg:p-12 rounded-3xl shadow-2xl shadow-indigo-200/50 border border-white flex flex-col items-center text-center"
         >
           <div className="lg:hidden flex items-center space-x-3 mb-8">
