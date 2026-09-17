@@ -1,11 +1,10 @@
-
 import { Mail, CheckCircle, Clock, Calendar } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function Login() {
   const handleGoogleLogin = () => {
-    // Redirect to backend OAuth route
-    window.location.href = 'http://localhost:5000/api/auth/google';
+    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+    window.location.href = `${API_URL}/auth/google`;
   };
 
   return (
